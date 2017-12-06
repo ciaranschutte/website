@@ -72,8 +72,8 @@ const AboutUs = ({}) => (
             line-height: 1.2;
           `}
         >
-          We created Overture to share with the community, components actively
-          use in our projects.
+          We created Overture to share components that we actively use with the
+          data science community.
         </p>
       </div>
       <div
@@ -88,11 +88,12 @@ const AboutUs = ({}) => (
       >
         <p className={moreAboutUs}>
           Overture is created using OICR’s experience in building large scale
-          infrastructures, big data ETL and portals supporting genomic research.
+          infrastructures, big data ETLs, and data portals supporting genomic
+          research.
         </p>
         <p className={moreAboutUs}>
-          Built to be re-usable and scalable, Overture’s components are well
-          documented, actively supported and welcome external feedback and
+          Built to be reusable and scalable, Overture’s components are well
+          documented and actively supported. We welcome external feedback and
           contributions.
         </p>
       </div>

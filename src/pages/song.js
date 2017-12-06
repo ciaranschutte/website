@@ -3,8 +3,13 @@ import Link from 'gatsby-link';
 import styled, { css } from 'react-emotion';
 
 import { container, slimContainer } from 'common/layout';
+import { large, medium, small } from 'common/dimensions';
+import { pxToEmByFontBasis } from 'common/utils';
 import colors from 'common/colors';
 import Header from 'components/Header';
+
+const fontBasis = 56;
+const pxToEm = px => pxToEmByFontBasis(px, fontBasis);
 
 const Song = () => (
   <React.Fragment>
@@ -14,23 +19,27 @@ const Song = () => (
         background-image: url(${require('assets/product-splash-bg.svg')});
         background-size: 100% auto;
         color: #fff;
+        font-size: ${fontBasis}px;
+        @media (max-width: ${large}px) {
+          font-size: 30px;
+        }
       `}
     >
       <div
         className={css`
-          font-size: 56px;
+          font-size: 1em;
           font-weight: 700;
           line-height: 1.25;
           text-align: center;
-          padding-top: 80px;
-          padding-bottom: 50px;
+          padding-top: ${pxToEm(80)};
+          padding-bottom: ${pxToEm(50)};
         `}
       >
         Song
       </div>
       <p
         className={css`
-          font-size: 30px;
+          font-size: 0.53em;
           font-weight: 300;
           line-height: 1.23;
           text-align: center;
@@ -49,7 +58,7 @@ const Song = () => (
           background-color: #ffffff;
           box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.15);
           display: flex;
-          font-size: 24px;
+          font-size: ${pxToEm(24)};
           color: ${colors.blueDark};
           line-height: 1.88;
           flex-shrink: 1;
@@ -58,6 +67,7 @@ const Song = () => (
       >
         <p
           className={css`
+            margin: ${pxToEm(48)} ${pxToEm(40)};
             margin: 48px 40px;
             max-width: 25em;
           `}
@@ -70,8 +80,8 @@ const Song = () => (
         <div
           className={css`
             background-color: ${colors.bgGrey};
-            padding-left: 24px;
-            padding-right: 24px;
+            padding-left: ${pxToEm(24)};
+            padding-right: ${pxToEm(24)};
             flex-grow: 1;
             display: flex;
             justify-content: center;
@@ -81,6 +91,8 @@ const Song = () => (
         >
           <img
             className={css`
+              margin-top: ${pxToEm(-40)};
+              margin-bottom: ${pxToEm(-50)};
               margin-top: -40px;
               margin-bottom: -50px;
             `}
