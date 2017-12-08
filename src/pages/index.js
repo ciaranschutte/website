@@ -1,12 +1,13 @@
 import React from 'react';
-import Link from 'gatsby-link';
-import styled, { css } from 'react-emotion';
+import styled from 'react-emotion';
 import colors from 'common/colors';
 import { container } from 'common/layout';
 
 import Header from 'components/Header';
 import AboutUs from 'components/home/AboutUs';
 import ProductsSection from 'components/home/ProductsSection';
+
+import { phone, large } from 'common/dimensions';
 
 const HeroSectionStyled = styled(`div`)`
   position: relative;
@@ -31,10 +32,20 @@ const PreHeadingStyled = styled(`div`)`
     margin-top: 1em;
     margin-left: 0.1em;
   }
+  @media (max-width: ${phone}px) {
+    font-size: 25px;
+    padding-top: 2.4em;
+  }
 `;
 
 const HeadingStyled = styled(`div`)`
   line-height: 1.25;
+  @media (max-width: ${phone}px) {
+    font-size: 40px;
+    line-height: 1.33;
+    color: #003055;
+    max-width: 8em;
+  }
 `;
 
 const SubHeadingStyled = styled(`div`)`
@@ -42,6 +53,10 @@ const SubHeadingStyled = styled(`div`)`
   line-height: 1.6;
   margin-top: 2em;
   margin-bottom: 3.2em;
+  @media (max-width: ${phone}px) {
+    font-size: 18px;
+    line-height: 1.67;
+  }
 `;
 
 const HeroIllustrationStyled = styled(`div`)`
@@ -52,6 +67,12 @@ const HeroIllustrationStyled = styled(`div`)`
   right: 0;
   width: 45%;
   height: 100%;
+  background-position: left bottom;
+  @media (max-width: ${phone}px) {
+    width: 70%;
+    height: 0;
+    padding-bottom: 65%;
+  }
 `;
 
 const TextWrapperStyled = styled(`div`)`
@@ -59,7 +80,7 @@ const TextWrapperStyled = styled(`div`)`
   font-size: 56px;
   overflow: hidden;
   ${container};
-  @media (min-width: 1000px) {
+  @media (min-width: ${large}px) {
     padding-right: 8.5em;
   }
 `;
@@ -82,7 +103,13 @@ const IndexPage = () => (
       </TextWrapperStyled>
     </HeroSectionStyled>
     <ProductsSection />
-    <AboutUs />
+    <AboutUs
+      css={`
+        @media (max-width: ${phone}px) {
+          display: none;
+        }
+      `}
+    />
   </React.Fragment>
 );
 

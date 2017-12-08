@@ -2,7 +2,8 @@ import React from 'react';
 import styled, { css } from 'react-emotion';
 import Link from 'gatsby-link';
 
-import { green } from 'common/colors';
+import { phone } from 'common/dimensions';
+
 import GetStartedButton from './GetStartedButton';
 
 const HeaderStyled = styled('div')`
@@ -12,13 +13,22 @@ const HeaderStyled = styled('div')`
   flex-direction: row;
   align-items: center;
   box-shadow: 2px 2px 10px 0 rgba(0, 0, 0, 0.2);
+  @media (max-width: ${phone}px) {
+    padding: 7px 8px;
+  }
 `;
 
 const LogoStyled = styled('img')`
   width: 40px;
   height: auto;
+  display: block;
+  @media (max-width: ${phone}px) {
+    width: 46px;
+    padding: 2px 6px;
+  }
 `;
-const AnchorStyled = styled('a')`
+
+const AboutUsStyled = styled('a')`
   display: inline-flex;
   padding: 13px 30px;
   border-radius: 5px;
@@ -29,10 +39,9 @@ const AnchorStyled = styled('a')`
   &:hover {
     text-decoration: underline;
   }
-`;
-
-const greenBg = css`
-  background-color: ${green};
+  @media (max-width: ${phone}px) {
+    display: none;
+  }
 `;
 
 export default ({ aboutUs }) => (
@@ -45,7 +54,7 @@ export default ({ aboutUs }) => (
     >
       <LogoStyled src={require('assets/logo-small.png')} />
     </Link>
-    {aboutUs && <AnchorStyled href="#about-us">About Us</AnchorStyled>}
+    {aboutUs && <AboutUsStyled href="#about-us">About Us</AboutUsStyled>}
     <GetStartedButton />
   </HeaderStyled>
 );

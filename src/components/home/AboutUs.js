@@ -33,7 +33,7 @@ const moreAboutUs = css`
   width: 18em;
 `;
 
-const AboutUs = ({}) => (
+const AboutUs = ({ className }) => (
   <div
     className={css`
       position: relative;
@@ -41,6 +41,7 @@ const AboutUs = ({}) => (
       padding: 100px 0;
       color: ${colors.blueDark};
       overflow: hidden;
+      ${className};
     `}
   >
     <Illustration />

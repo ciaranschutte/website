@@ -1,6 +1,5 @@
 import React from 'react';
 import { css } from 'react-emotion';
-import Link from 'gatsby-link';
 
 import { container } from 'common/layout';
 import GetStartedButton from 'components/GetStartedButton';

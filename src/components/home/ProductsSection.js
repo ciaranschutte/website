@@ -5,7 +5,7 @@ import { container } from 'common/layout';
 import styled, { css } from 'react-emotion';
 import Waypoint from 'react-waypoint';
 import TransitionGroup from 'react-transition-group-plus';
-import Content from 'components/Content';
+import Content from 'components/home/Content';
 import tabs from 'common/tabs';
 
 const tabStyles = {
@@ -51,6 +51,7 @@ const WrapperStyled = styled(`div`)`
 
 const TabSeparator = () => (
   <img
+    alt=""
     className={css`
       margin-left: 2em;
       margin-right: 2em;
@@ -61,9 +62,9 @@ const TabSeparator = () => (
 
 const enhance = compose(withState('tabIndex', 'setTabIndex', -1));
 
-const ProductsSection = ({ tabIndex, setTabIndex }) => {
+const ProductsSection = ({ tabIndex, setTabIndex, className }) => {
   return (
-    <div>
+    <div className={className}>
       <WrapperStyled>
         <div className={`${tabStyles.tabs}`}>
           <div className="tab-list">
