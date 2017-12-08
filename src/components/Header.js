@@ -2,7 +2,7 @@ import React from 'react';
 import styled, { css } from 'react-emotion';
 import Link from 'gatsby-link';
 
-import { phone } from 'common/dimensions';
+import { phone, mobile } from 'common/dimensions';
 
 import GetStartedButton from './GetStartedButton';
 
@@ -39,7 +39,7 @@ const AboutUsStyled = styled('a')`
   &:hover {
     text-decoration: underline;
   }
-  @media (max-width: ${phone}px) {
+  @media (max-width: ${mobile}px) {
     display: none;
   }
 `;

@@ -6,8 +6,9 @@ import { container } from 'common/layout';
 import Header from 'components/Header';
 import AboutUs from 'components/home/AboutUs';
 import ProductsSection from 'components/home/ProductsSection';
+import ProductsSectionMobile from 'components/home/ProductsSectionMobile';
 
-import { phone, large } from 'common/dimensions';
+import { phone, mobile, large } from 'common/dimensions';
 
 const HeroSectionStyled = styled(`div`)`
   position: relative;
@@ -102,10 +103,24 @@ const IndexPage = () => (
         </SubHeadingStyled>
       </TextWrapperStyled>
     </HeroSectionStyled>
-    <ProductsSection />
+    <ProductsSectionMobile
+      css={`
+        @media (min-width: ${mobile + 1}px) {
+          display: none;
+        }
+      `}
+    />
+    <ProductsSection
+      css={`
+        @media (max-width: ${mobile}px) {
+          display: none;
+        }
+      `}
+    />
+
     <AboutUs
       css={`
-        @media (max-width: ${phone}px) {
+        @media (max-width: ${mobile}px) {
           display: none;
         }
       `}

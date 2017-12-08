@@ -1,11 +1,9 @@
 import React from 'react';
-import Link from 'gatsby-link';
-import styled, { css } from 'react-emotion';
-import KeyPoint from 'components/product/KeyPoint';
+import { css } from 'react-emotion';
 
-import { container, slimContainer } from 'common/layout';
-import colors from 'common/colors';
-import { containerMaxWidth } from 'common/dimensions';
+import KeyPoint from 'components/product/KeyPoint';
+import { container } from 'common/layout';
+
 const KeyPoints = () => {
   return (
     <div
@@ -16,6 +14,7 @@ const KeyPoints = () => {
           display: flex;
           margin-top: 150px;
           margin-bottom: 150px;
+          flex-wrap: wrap;
           .key-point {
             flex-basis: calc(100% / 3);
           }

@@ -34,7 +34,7 @@ export default [
   },
   {
     key: 'transfer',
-    tabText: <span>Transfer &amp; Store</span>,
+    tabText: <React.Fragment>Transfer &amp; Store</React.Fragment>,
     description: `
       Transferring and storing petabytes of data is challenging! Our
       high-performance tools, optimized for genomic data processing, offer a

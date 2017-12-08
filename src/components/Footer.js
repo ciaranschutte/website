@@ -4,6 +4,7 @@ import Link from 'gatsby-link';
 import colors from 'common/colors';
 import { container } from 'common/layout';
 import tabs from 'common/tabs';
+import { phone } from 'common/dimensions';
 
 const WrapperStyled = styled('div')`
   border-top: 1px solid #ddd;
@@ -60,10 +61,23 @@ const NavLink = ({ to, children }) =>
 export default () => (
   <WrapperStyled>
     <FooterRowStyled>
-      <ColumnStyled>
+      <ColumnStyled
+        css={`
+          @media (max-width: ${phone}px) {
+              order: 2;
+              text-align: right;
+          }
+        `}
+      >
         <OicrLogo />
       </ColumnStyled>
-      <ColumnStyled>
+      <ColumnStyled
+        css={`
+          @media (max-width: ${phone}px) {
+            order: 1;
+          }
+        `}
+      >
         <NavHeadingStyled>About</NavHeadingStyled>
         <NavLink to="">About ICGC</NavLink>
         <a
@@ -77,10 +91,21 @@ export default () => (
 
       {tabs.map(tab => {
         return (
-          <ColumnStyled key={tab.key}>
+          <ColumnStyled
+            key={tab.key}
+            css={`
+              @media (max-width: ${phone}px) {
+                  display: none;
+              }
+            `}
+          >
             <NavHeadingStyled>{tab.tabText}</NavHeadingStyled>
             {tab.cards.map(card => {
-              return <NavLink to={card.learnMoreLink}>{card.title}</NavLink>;
+              return (
+                <NavLink key={card.title} to={card.learnMoreLink}>
+                  {card.title}
+                </NavLink>
+              );
             })}
           </ColumnStyled>
         );

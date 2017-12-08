@@ -21,10 +21,11 @@ const tabStyles = {
     }
     .tab {
       margin-bottom: 0;
-      padding: 0.8em 2em;
+      padding: 1.207% 3.104%;
       border-top-right-radius: 2.5px;
       border-top-left-radius: 2.5px;
       transition: 0.1s background-color;
+      overflow-wrap: normal;
       &:not(.active) {
         cursor: pointer;
         &:hover {
@@ -52,9 +53,9 @@ const WrapperStyled = styled(`div`)`
 const TabSeparator = () => (
   <img
     alt=""
-    className={css`
-      margin-left: 2em;
-      margin-right: 2em;
+    css={`
+      margin-left: 0.5em;
+      margin-right: 0.5em;
     `}
     src={require('assets/glyph-arrow.svg')}
   />
