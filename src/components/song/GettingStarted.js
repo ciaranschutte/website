@@ -1,10 +1,10 @@
 import React from 'react';
 import { css } from 'react-emotion';
-import Link from 'gatsby-link';
 
 import { container } from 'common/layout';
 import GetStartedButton from 'components/GetStartedButton';
 import { products } from 'common/products';
+import Terminal from '../Terminal';
 const Line = () => (
   <div
     css={`
@@ -78,11 +78,58 @@ const GettingStarted = () => {
         num={2}
         text="Build and run the source using maven with simple instructions."
         right={
-          <img
-            alt=""
-            css={`margin-top: -28px; max-width: 694px;`}
-            src={require('assets/step2.png')}
-          />
+          <Terminal css={`margin-top: -28px; max-width: 600px;`}>
+            <pre>
+              <span>
+                <span className="cm-variable no-copy">$ </span>
+                <span className="cm-variable">git</span>{' '}
+                <span className="cm-variable">clone</span>{' '}
+                <span className="cm-variable">git</span>
+                <span className="cm-operator">@</span>
+                <span className="cm-variable">
+                  github
+                </span>.<span className="cm-property">com</span>:<span className="cm-variable">
+                  icgc
+                </span>
+                <span className="cm-operator">-</span>
+                <span className="cm-variable">dcc</span>
+                <span className="cm-operator">/</span>
+                <span className="cm-variable">
+                  SONG
+                </span>.<span className="cm-property">git</span>
+              </span>
+            </pre>
+            <pre>
+              <span>
+                <span className="cm-variable no-copy">$ </span>
+                <span className="cm-variable">cd</span>{' '}
+                <span className="cm-variable">SONG</span>
+                <span className="cm-operator">/</span>
+                <span className="cm-variable">song</span>
+                <span className="cm-operator">-</span>
+                <span className="cm-variable">server</span>
+              </span>
+            </pre>
+            <pre>
+              <span>
+                <span className="cm-variable no-copy">$ </span>
+                <span className="cm-variable">mvn</span>{' '}
+                <span className="cm-variable">spring</span>
+                <span className="cm-operator">-</span>
+                <span className="cm-variable">
+                  boot
+                </span>:<span className="cm-variable">run</span>{' '}
+                <span className="cm-operator">-</span>
+                <span className="cm-variable">
+                  Drun
+                </span>.<span className="cm-property">profiles</span>
+                <span className="cm-operator">=</span>
+                <span className="cm-variable">
+                  dev
+                </span>,<span className="cm-variable">test</span>
+              </span>
+            </pre>
+          </Terminal>
         }
         align="flex-start"
       />
@@ -90,10 +137,26 @@ const GettingStarted = () => {
         num={3}
         text="get started running SONG with just two Docker commands."
         right={
-          <img
-            css={`margin-top: -28px; max-width: 694px;`}
-            src={require('assets/step3.png')}
-          />
+          <Terminal css={`margin-top: -28px; max-width: 600px;`}>
+            <pre>
+              <span>
+                <span className="cm-variable no-copy">$ </span>
+                <span className="cm-variable">docker</span>
+                <span className="cm-operator">-</span>
+                <span className="cm-variable">compose</span>{' '}
+                <span className="cm-variable">build</span>
+              </span>
+            </pre>
+            <pre>
+              <span>
+                <span className="cm-variable no-copy">$ </span>
+                <span className="cm-variable">docker</span>
+                <span className="cm-operator">-</span>
+                <span className="cm-variable">compose</span>{' '}
+                <span className="cm-variable">up</span>
+              </span>
+            </pre>
+          </Terminal>
         }
         align="flex-start"
       />

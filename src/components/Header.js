@@ -2,7 +2,6 @@ import React from 'react';
 import styled, { css } from 'react-emotion';
 import Link from 'gatsby-link';
 
-import { green } from 'common/colors';
 import GetStartedButton from './GetStartedButton';
 
 const HeaderStyled = styled('div')`
