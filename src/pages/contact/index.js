@@ -8,18 +8,14 @@ import "./styles.scss";
 
 class ContactPage extends Component {
   componentDidMount() {
-    // Mount jira plugin
-    window.jellDeskSettings = {
-      sourceType: "web",
-      source: window.location.href,
-      position: { horizontal: "right", vertical: "bottom" },
-      offset: { horizontal: "50px", vertical: "50px" },
-      serviceUrl:
-        "https://extsd.oicr.on.ca/plugins/servlet/widget?jellToken=1234567890123456789&projectKey=OV&serviceDeskId=7"
-    };
+    // these get updated via handleChange.
+    window.ATL_JQ_PAGE_PROPS = {
+      fieldValues: {
+        fullname: "test",
+        summary : '',
+	    }	 
+    }
   }
-
-  jiraEndpoint = "https://extsd.oicr.on.ca/rest/embeddable/1.0/client/tickets/create-request?projectKey=OV&apiToken=1234567890123456789";
 
   state = {
     requestType: "1",
@@ -29,32 +25,23 @@ class ContactPage extends Component {
   };
 
   handleSubmit = e => {
-    e.preventDefault();
-    let payload = {
-      jellToken: "1234567890123456789",
-      defaultOrg: "null",
-      serviceDeskId: "7",
-      fullname: this.state.name,
-      email: this.state.email,
-      summary: this.state.description,
-      requestTypeId: this.state.requestType,
-      projectKey: "OV",
-      source: "null",
-      fingerprint: 2226868218
-    };
-    
-    // FIXME: This is failing on a CORS issue! 
-    fetch(this.jiraEndpoint, {
-      method: "post",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(payload)
-    }).then(response => {
-      console.log("response is ", response)
-    });
+    // Fragile hack. If Jira collector changes class form does not get submitted.
+    e.preventDefault()
+// atlwdg-frame
+    // doesn't look like this will work due to cors issues with iframes. 
+    console.log($("#atlwdg-frame"))
+    console.log($("#atlwdg-frame").contents().find(".submit-button"));
+    console.log("attempting submitting jira form.")
+    console.log("submit button is", $(".submit-button"))
+    // $(".submit-button").trigger("submit")
   };
+  
+  // Update state on changing a text input, AND hackily update the content for the hidden jira form.
+  // onChange={e => this.setState({ description: e.target.value })}
+  handleChange = (field, e, ATL_field) => {
+    this.setState({[field]: e.target.value})
+    window.ATL_JQ_PAGE_PROPS.fieldValues[ATL_field] = e.target.value;
+  }
 
   render() {
     return (
@@ -86,7 +73,7 @@ class ContactPage extends Component {
         <section className="section">
           <div className="container">
             <div className="columns">
-              <div className="column is-half is-offset-3">
+              <div className="column is-half ">
                 <div>
                   <H2>Send us a message</H2>
                   <div className="mt3 yellow-bar" />
@@ -108,7 +95,6 @@ class ContactPage extends Component {
 
               {/* contact form HIDDEN FOR NOW */}
               
-              {/*
               <div className="column is-half self-center">
                 <form onSubmit={this.handleSubmit}>
                   <div className="field">
@@ -140,7 +126,7 @@ class ContactPage extends Component {
                       className="input"
                       type="text"
                       value={this.state.name}
-                      onChange={e => this.setState({ name: e.target.value })}
+                      onChange={e => this.handleChange("name", e, "fullname")}
                       />
                   </div>
                   <div className="field">
@@ -152,7 +138,7 @@ class ContactPage extends Component {
                       className="input"
                       type="text"
                       value={this.state.email}
-                      onChange={e => this.setState({ email: e.target.value })}
+                      onChange={e => this.handleChange("email", e, "email")}
                       />
                   </div>
                   <div className="field">
@@ -164,10 +150,8 @@ class ContactPage extends Component {
                       className="textarea"
                       type="text"
                       value={this.state.description}
-                      onChange={e =>
-                                this.setState({ description: e.target.value })
-                                }
-                                />
+                      onChange={e => this.handleChange("description", e, "summary")}
+                      />
                   </div>
 
                   <div className="pt2">
@@ -176,7 +160,6 @@ class ContactPage extends Component {
                   </div>
                 </form>
               </div>
-              */}
             </div>
         </div></section>
       </main>

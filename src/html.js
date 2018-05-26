@@ -49,7 +49,9 @@ export default class HTML extends Component {
           />
           {this.props.postBodyComponents}
           <script src={__PATH_PREFIX__ + '/js/toggle.js'} />
-          
+          <script type="text/javascript" src="https://extsd.oicr.on.ca/s/895afc576bcdef39722382a57820393d-T/5hcqv5/75007/b6b48b2829824b869586ac216d119363/2.0.24/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?locale=en-US&collectorId=0bf8db52"></script>
+
+ 
           {/* JIRA EMBED SCRIPT TODO: Move this to JUST the contact page, via componentDidMount. 
           <script src={__PATH_PREFIX__ + '/js/jira_embed.js'} />
           <script type='text/javascript' src='https://extsd.oicr.on.ca/s/5hcqv5/75007/b6b48b2829824b869586ac216d119363/1.1.4.1/_/download/resources/com.jelldesk.apps.embeddable-widget:widget-client-resources/embeddable-client.js'></script>
